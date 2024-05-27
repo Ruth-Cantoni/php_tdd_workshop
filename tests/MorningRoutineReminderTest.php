@@ -40,5 +40,17 @@ final class MorningRoutineReminderTest extends TestCase
         $reminder->remind();
     }
 
+    public function test_print_read_at_seven(): void
+    {
+        $clock = $this->createStub(SystemClock::class);
+        $clock->method('currentTime')->willReturn(
+            DateTimeImmutable::createFromFormat('H:i:s', '07:00:00')
+        );
 
+        $printer = $this->createMock(Printer::class);
+        $printer->expects($this->once())->method('print')->with('read');
+
+        $reminder = new MorningRoutineReminder($clock, $printer);
+        $reminder->remind();
+    }
 }
