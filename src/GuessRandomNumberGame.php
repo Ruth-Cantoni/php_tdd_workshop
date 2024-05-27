@@ -17,6 +17,9 @@ final class GuessRandomNumberGame
         if ( $guessNumber > $this->randomNumber) {
             return 'higher';
         }
-        return 'lower';
+        if ( $guessNumber < $this->randomNumber) {
+            return 'lower';
+        }
+        return 'win';
     }
 }
