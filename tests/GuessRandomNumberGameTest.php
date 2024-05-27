@@ -26,4 +26,13 @@ final class GuessRandomNumberGameTest extends TestCase
 
         self::assertSame('higher', $changeMe->play( 9));
     }
+
+    public function test_should_return_win_when_attempt_equals_random_number() {
+        $generator = $this->createStub(RandomNumberGeneratorInterface::class);
+        $generator->method('getANumber')->willReturn(6);
+        $changeMe = new GuessRandomNumberGame($generator);
+
+        self::assertSame('win', $changeMe->play( 6));
+
+    }
 }
