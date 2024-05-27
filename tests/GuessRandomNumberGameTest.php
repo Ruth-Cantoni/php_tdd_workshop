@@ -33,6 +33,17 @@ final class GuessRandomNumberGameTest extends TestCase
         $changeMe = new GuessRandomNumberGame($generator);
 
         self::assertSame('win', $changeMe->play( 6));
+    }
 
+    public function test_return_loose_when_the_user_has_not_guessed_the_number_the_third_time()
+    {
+        $generator = $this->createStub(RandomNumberGeneratorInterface::class);
+        $generator->method('getANumber')->willReturn(6);
+        $changeMe = new GuessRandomNumberGame($generator);
+
+        $changeMe->play(5);
+        $changeMe->play(9);
+
+        self::assertSame('loose', $changeMe->play(4));
     }
 }
