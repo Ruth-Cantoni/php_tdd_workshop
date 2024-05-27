@@ -14,11 +14,20 @@ final class PasswordValidator
             return false;
         }
 
+        if ($this->capitalLetterIsMissing($password)) {
+            return false;
+        }
+
         return true;
     }
 
     private function passwordIsTooShort(string $password): bool
     {
         return mb_strlen($password) < self::MIN_LENGTH;
+    }
+
+    private function capitalLetterIsMissing(string $password): bool
+    {
+        return (bool)preg_match('/[A-Z]+/', $password) === false;
     }
 }
