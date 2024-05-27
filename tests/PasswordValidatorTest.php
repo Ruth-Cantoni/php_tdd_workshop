@@ -40,4 +40,12 @@ final class PasswordValidatorTest extends TestCase
 
         self::assertFalse($validator->validate($password));
     }
+
+    public function test_no_number_is_invalid():void
+    {
+        $password = 'abcdQWERT';
+        $validator = new PasswordValidator();
+
+        self::assertFalse($validator->validate($password));
+    }
 }
