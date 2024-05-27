@@ -24,4 +24,12 @@ final class PasswordValidatorTest extends TestCase
 
         self::assertFalse($validator->validate($password));
     }
+
+    public function test_no_capital_letter_is_invalid():void
+    {
+        $password = '12a34p589';
+        $validator = new PasswordValidator();
+
+        self::assertFalse($validator->validate($password));
+    }
 }
