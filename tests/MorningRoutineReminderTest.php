@@ -25,4 +25,20 @@ final class MorningRoutineReminderTest extends TestCase
         $reminder = new MorningRoutineReminder($clock, $printer);
         $reminder->remind();
     }
+
+    public function test_print_exercise_at_six_fifty_nine(): void
+    {
+        $clock = $this->createStub(SystemClock::class);
+        $clock->method('currentTime')->willReturn(
+            DateTimeImmutable::createFromFormat('H:i:s', '06:59:00')
+        );
+
+        $printer = $this->createMock(Printer::class);
+        $printer->expects($this->once())->method('print')->with('exercise');
+
+        $reminder = new MorningRoutineReminder($clock, $printer);
+        $reminder->remind();
+    }
+
+
 }
