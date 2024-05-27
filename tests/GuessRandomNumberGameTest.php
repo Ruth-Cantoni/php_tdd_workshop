@@ -24,6 +24,6 @@ final class GuessRandomNumberGameTest extends TestCase
         $generator->method('getANumber')->willReturn(6);
         $changeMe = new GuessRandomNumberGame($generator);
 
-        self::assertSame('higher', $changeMe->play( 5));
+        self::assertSame('higher', $changeMe->play( 9));
     }
 }

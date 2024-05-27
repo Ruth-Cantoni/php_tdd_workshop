@@ -7,13 +7,16 @@ namespace Kata;
 final class GuessRandomNumberGame
 {
 
-    private RandomNumberGeneratorInterface $randomNumberGenerator;
+    private int $randomNumber;
 
     public function __construct(RandomNumberGeneratorInterface $randomGenerator) {
-        $this->randomNumberGenerator = $randomGenerator;
+        $this->randomNumber = $randomGenerator->getANumber();
     }
     public function play($guessNumber): string
     {
+        if ( $guessNumber > $this->randomNumber) {
+            return 'higher';
+        }
         return 'lower';
     }
 }
