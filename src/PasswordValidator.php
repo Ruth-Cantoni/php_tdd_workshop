@@ -18,6 +18,10 @@ final class PasswordValidator
             return false;
         }
 
+        if ($this->lowerLetterIsMissing($password)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -29,5 +33,10 @@ final class PasswordValidator
     private function capitalLetterIsMissing(string $password): bool
     {
         return (bool)preg_match('/[A-Z]+/', $password) === false;
+    }
+
+    private function lowerLetterIsMissing(string $password): bool
+    {
+        return (bool)preg_match('/[a-z]+/', $password) === false;
     }
 }
