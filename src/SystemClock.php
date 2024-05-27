@@ -2,7 +2,9 @@
 
 namespace Kata;
 
+use DateTimeImmutable;
+
 interface SystemClock
 {
-    public function currentTime();
+    public function currentTime(): DateTimeImmutable;
 }
