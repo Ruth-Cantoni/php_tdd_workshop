@@ -8,6 +8,6 @@ final class GuessRandomNumberGame
 {
     public function play($guessNumber): string
     {
-        return '';
+        return 'lower';
     }
 }
