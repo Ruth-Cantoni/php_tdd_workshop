@@ -32,4 +32,12 @@ final class PasswordValidatorTest extends TestCase
 
         self::assertFalse($validator->validate($password));
     }
+
+    public function test_no_lower_letter_is_invalid():void
+    {
+        $password = '12A34P589';
+        $validator = new PasswordValidator();
+
+        self::assertFalse($validator->validate($password));
+    }
 }
