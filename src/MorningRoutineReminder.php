@@ -20,7 +20,10 @@ final class MorningRoutineReminder
     {
         $time = $this->clock->currentTime();
 
-        if ($time->format('H:i') === '06:00') {
+        if (
+            $time->format('H:i') >= '06:00'
+            && $time->format('H:i') < '07:00'
+        ) {
             $this->printer->print('exercise');
         }
 
