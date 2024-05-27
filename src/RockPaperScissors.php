@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Kata;
 
-final class ChangeMe
+final class RockPaperScissors
 {
-    public function changeMe(): bool
+    public function play(): bool
     {
         return true;
     }
