@@ -22,6 +22,10 @@ final class PasswordValidator
             return false;
         }
 
+        if ($this->numberIsMissing($password)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -38,5 +42,10 @@ final class PasswordValidator
     private function lowerLetterIsMissing(string $password): bool
     {
         return (bool)preg_match('/[a-z]+/', $password) === false;
+    }
+
+    private function numberIsMissing(string $password): bool
+    {
+        return (bool)preg_match('/\d+/', $password) === false;
     }
 }
