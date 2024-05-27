@@ -6,6 +6,14 @@ namespace Kata;
 
 final class MorningRoutineReminder
 {
+    private const ROUTINES = [
+        [
+            'since' => '06:00',
+            'until' => '06:59',
+            'message' => 'exercise'
+        ]
+    ];
+
     private SystemClock $clock;
 
     private Printer $printer;
@@ -19,12 +27,17 @@ final class MorningRoutineReminder
     public function remind(): void
     {
         $time = $this->clock->currentTime();
+        $formattedTime = $time->format('H:i');
 
-        if (
-            $time->format('H:i') >= '06:00'
-            && $time->format('H:i') < '07:00'
-        ) {
-            $this->printer->print('exercise');
+        foreach (self::ROUTINES as $routine) {
+            if (
+                $formattedTime >= $routine['since']
+                && $formattedTime <= $routine['until']
+            ) {
+                $this->printer->print($routine['message']);
+
+                break;
+            }
         }
 
         return;
