@@ -11,7 +11,12 @@ final class MorningRoutineReminder
             'since' => '06:00',
             'until' => '06:59',
             'message' => 'exercise'
-        ]
+        ],
+        [
+            'since' => '07:00',
+            'until' => '07:59',
+            'message' => 'read'
+        ],
     ];
 
     private SystemClock $clock;
