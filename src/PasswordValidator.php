@@ -8,6 +8,6 @@ final class PasswordValidator
 {
     public function validate(): bool
     {
-        return true;
+        return false;
     }
 }
