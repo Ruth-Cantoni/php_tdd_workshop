@@ -6,8 +6,8 @@ namespace Kata;
 
 final class PasswordValidator
 {
-    public function validate(): bool
+    public function validate(string $password): bool
     {
-        return false;
+        return true;
     }
 }
