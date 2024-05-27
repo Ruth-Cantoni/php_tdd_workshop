@@ -16,4 +16,12 @@ final class PasswordValidatorTest extends TestCase
 
         self::assertTrue($validator->validate($validPassword));
     }
+
+    public function test_short_password_is_invalid(): void
+    {
+        $password = '12A34p5';
+        $validator = new PasswordValidator();
+
+        self::assertFalse($validator->validate($password));
+    }
 }
